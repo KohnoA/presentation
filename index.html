@@ -17,27 +17,357 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>React</h2>
+					<h2>History API / Routing</h2>
 				</section>
 
 				<section>
-					<h2>Image example</h2>
-					<img src="./examples/assets/image1.png">
-				</section>
-
-				<section>
-					<section>Slide 2.1</section>
 					<section>
-						<h2>Code example</h2>
-						<pre><code>
-							function sum(a, b) {
-								return a + b;
-							}
-						</code></pre>
+						<h3>Routing</h3>
+						<p>What is it and why is it needed?</p>
+					</section>
+					<section>
+						<h3>MPA - Multiple Page Application</h3>
+						<p>Originally web applications consisted in interconnected html documents</p>
+						<img src="./images/MPA.png" alt="MPA">
+					</section>
+					<section>
+						<h3>SPA - Single Page Application</h3>
+						<p>SPAs are based on a single document model. Web applications' lifespan happens on a single html 
+							page, along with the transitions between the different views.</p>
+						<img src="./images/SPA.png" alt="MPA">
+					</section>
+					<section>
+						<h3>Routing</h3>
+						<p>Client-side routing is a type of routing where users navigate through an application without 
+							completely reloading the page even if the page's URL changes, instead displaying new content.</p>
+							<pre><code>
+								<!-- One html-document -->
+
+								<!-- content on home page -->
+								forexample.com/
+
+								<!-- content on about page -->
+								forexample.com/about
+
+								<!-- content on search page -->
+								forexample.com/search
+							</code></pre>
 					</section>
 				</section>
 
-				<section>The End</section>
+				<section>
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">
+								History API
+							</a>
+						</h3>
+					</section>
+					<section>
+						<p>
+							History API - allows you to walk through the history of the page, add items to the history, 
+							respond to history transitions and other usefulness.
+						</p>
+						<img src="./images/history-api.png" alt="history-api">
+						<p>
+							<a href="https://html.spec.whatwg.org/multipage/browsing-the-web.html">
+								HTML5 Living Standard
+							</a>
+						</p>
+					</section>
+					<section>
+						<h4>window.history</h4>
+						<p>The History API relies on one DOM interface, the History object.</p>
+						<img src="./images/history-api2.png" alt="history-api2">
+					</section>
+					<section>
+						<p>
+							Each tab has a unique History object, which resides in window.history.
+						</p>
+						<img src="./images/history-object.png" alt="history object">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Basic properties</h3>
+						<ul>
+							<li>window.history.length</li>
+							<li>window.history.state</li>
+							<li>window.history.scrollRestoration</li>
+						</ul>
+					</section>
+		
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/length">
+								history.length
+							</a>
+						</h3>
+						<p>
+							The History length property in HTML is used to return the count of URLs in the history list of 
+							the current browser window.
+						</p>
+						<ul>
+							<li>The minimum value returned by this property is 1 (current page)</li>
+							<li>The maximum - 50</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.length // 1-50
+						</code></pre>
+						<h4>Return value:</h4>
+						<p>
+							It returns a numeric value that represents the number of entries in the session 
+							history.
+						</p>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/state">
+								history.state
+							</a>
+						</h3>
+						<p>
+							The History.state property returns a value representing the state at the top of the history stack.
+						</p>
+						<h4>Return value:</h4>
+						<p>
+							The state at the top of the history stack. The value is null until the pushState() or 
+							replaceState() method is used.
+						</p>
+					</section>
+					<section>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.state
+						</code></pre>
+						<h4>Return object</h4>
+						<img src="./images/state-obj.png" alt="state object">
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration">
+								history.scrollRestoration
+							</a>
+						</h3>
+						<p>
+							The scrollRestoration property of History interface allows web applications to explicitly 
+							set default scroll restoration behavior on history navigation.
+						</p>
+					</section>
+					<section>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.scrollRestoration
+						</code></pre>
+						<h4>Value:</h4>
+						<ul>
+							<li>
+								auto - The location on the page to which the user has scrolled will be restored.
+							</li>
+							<li>
+								manual - The location on the page is not restored. The user will have to scroll to 
+								the location manually.
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Methods</h3>
+						<ul>
+							<li>window.history.go()</li>
+							<li>window.history.back()</li>
+							<li>window.history.forward()</li>
+							<li>window.history.pushState()</li>
+							<li>window.history.replaceState()</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/go">
+								history.go()
+							</a>
+						</h3>
+						<p>
+							The History.go() method loads a specific page from the session history. You can use it to move 
+							forwards and backwards through the history depending on the value of a parameter.
+						</p>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.go()
+							window.history.go(delta)
+						</code></pre>
+					</section>
+					<section>
+						<h4>Value:</h4>
+						<p>
+							The position in the history to which you want to move, relative to the current page. 
+							A negative value moves backwards, a positive value moves forwards.
+						</p>
+						<h4>For example:</h4>
+						<p>
+							history.go(2) moves forward two pages and history.go(-2) moves back two pages. If no value 
+							is passed or if delta equals 0, it has the same result as calling location.reload().
+						</p>
+					</section>
+	
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/back">
+								history.back()
+							</a>
+						</h3>
+						<p>The History.back() method causes the browser to move back one page in the session history.</p>
+						<p>
+							It has the same effect as calling history.go(-1). If there is no previous page, this method 
+							call does nothing.
+						</p>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.back()
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/forward">
+								history.forward()
+							</a>
+						</h3>
+						<p>
+							The History.forward() method causes the browser to move forward one page in the session history. 
+							It has the same effect as calling history.go(1).
+						</p>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.forward()
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState">
+								history.pushState()
+							</a>
+						</h3>
+						<p>
+							In an HTML document, the history.pushState() method adds an entry to the browser's 
+							session history stack.
+						</p>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.pushState(state, unused, url)
+							window.history.pushState({}, '' '/url')
+						</code></pre>
+					</section>
+					<section>
+						<h4>Parameters</h4>
+						<ul>
+							<li>
+								state - The state object is a JavaScript object which is associated with the new history 
+								entry created by pushState().
+							</li>
+							<li>
+								unused - This parameter exists for historical reasons, and cannot be omitted; passing an 
+								empty string is safe against future changes to the method.
+							</li>
+							<li>
+								url - The new history entry's URL.
+							</li>
+						</ul>
+					</section>
+	
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState">
+								history.replaceState()
+							</a>
+						</h3>
+						<p>
+							The History.replaceState() method modifies the current history entry, replacing it with 
+							the state object and URL passed in the method parameters.
+						</p>
+						<h4>Syntax</h4>
+						<pre><code>
+							window.history.replaceState(state, unused)
+							window.history.replaceState(state, unused, url)
+						</code></pre>
+					</section>
+					<section>
+						<h4>Parameters</h4>
+						<ul>
+							<li>
+								state - The state object is a JavaScript object which is associated with the history entry passed 
+								to the replaceState method. The state object can be null.
+							</li>
+							<li>
+								unused - This parameter exists for historical reasons, and cannot be omitted; passing an 
+								empty string is safe against future changes to the method.
+							</li>
+							<li>
+								url - The URL of the history entry.
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Events</h3>
+					</section>
+					<section>
+						<h3>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event">
+								Popstate
+							</a>
+						</h3>
+						<p>
+							The popstate event is fired when the active history entry changes as the user navigates 
+							through the session's history.
+						</p>
+					</section>
+					<section>
+						<h4>Syntax</h4>
+						<pre><code>
+							addEventListener('popstate', (event) => { });
+							onpopstate = (event) => { };
+						</code></pre>
+						<p>Event properties:</p>
+						<p>
+							PopStateEvent.state (read only) - Returns a copy of the information that was provided to 
+							pushState() or replaceState().
+						</p>
+					</section>
+					<section>
+						<h4>Importantly</h4>
+						<p>
+							Note that simply calling history.pushState() or history.replaceState() will not fire a popstate 
+							event. The popstate event will be triggered by a browser action, such as pressing the back or 
+							forward button (or calling history.back() or history.forward()).
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h3>
+						<a href="https://caniuse.com/?search=history%20api">
+							Support
+						</a>
+					</h3>
+					<img src="./images/support.png" alt="support">
+				</section>
+
+				<section>
+					<h3>The End</h3>
+				</section>
 			</div>
 		</div>
 
